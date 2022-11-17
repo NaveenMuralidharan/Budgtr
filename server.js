@@ -6,7 +6,6 @@ const PORT = 3001;
 
 const budgets = require("./models/budget");
 
-const bankAccount = 3000;
 
 app.use(express.urlencoded( {extended: true} ))
 
@@ -22,7 +21,7 @@ app.get('/budgets', (req, res)=>{
         })
         // find sum of all amounts
         let bankSum = amounts.reduce((a, b)=>a+b, 0)
-        console.log(bankSum)
+        
 
     res.render('index.ejs', {budgets: budgets, bankSum: bankSum})
 })
@@ -37,6 +36,8 @@ app.post('/budgets', (req, res)=>{
     
     let tags = req.body.tags.split(" ");
     req.body.tags = tags;
+    let amount = - Number(req.body.amount)
+    req.body.amount = amount;
     budgets.push(req.body);
     res.redirect('/budgets')
 })
