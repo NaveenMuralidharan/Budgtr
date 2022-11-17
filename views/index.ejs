@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <title>Document</title>
+
+    <style>
+        <% if(bankSum < 0){ %>
+            body{ background-color: red;}
+        <% } %> 
+        <% if(bankSum > 1000){ %>
+            body{ background-color: green;}
+        <% } %> 
+    </style>
+
+</head>
+<body>
+    <h1>Budgtr</h1>
+    <nav>
+        <button><a href="/budgets/new">New</a></button>
+    </nav>
+    <br>
+    <h3>Bank Account Balance: $ <%= bankSum %> </h3>
+     
+    <table>
+        <% budgets.forEach((budget, i)=>{ %>
+            <tr>
+
+                <td> <%= budget.date %> </td>
+                <td> <a href="/budgets/<%= i %>"> <%= budget.name %> </a></td>
+                <td> <%= budget.amount %> </td>
+
+            </tr>
+        <% }) %>
+    </table>
+
+
+
+</body>
+</html>

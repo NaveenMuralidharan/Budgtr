@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <title>Show budget item</title>
+</head>
+<body>
+    <h1><%= budget.name %></h1>
+    <nav>
+        <button value="Back"><a href="/budgets">Back</a></button>
+    </nav>
+    
+    date:
+    <br>
+    - <%= budget.date %>
+    <br>
+    name:
+    <br>
+    - <%= budget.name %>
+    <br>
+    from:
+    <br>
+    - <%= budget.from %>
+    <br>
+    amount:
+    <br>
+    - <%= budget.amount %>
+    <br>
+    tags:
+    <br>
+    - <% budget.tags.forEach((tag, i)=>{ %>
+        <% if(i === budget.tags.length - 1){ %>
+            <%= tag %>
+        <% } else { %>
+            <%= tag %>,
+        <% } %>
+        
+      <% }) %>
+</body>
+</html>
